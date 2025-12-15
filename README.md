@@ -13,6 +13,25 @@
 
 ---
 
+## 🎮 Interactive Demo & Landing Page
+
+This repository contains a full-stack simulation of the Orchestrator Prime platform. It includes a marketing-facing **Landing Page** and a fully functional **Merchant Dashboard**.
+
+### 1. The Landing Page
+The entry point (`components/LandingPage.tsx`) serves as the product showcase.
+*   **Hero Section**: Highlights the value proposition of a unified financial OS.
+*   **Architecture Visualization**: An interactive "How It Works" diagram explaining the flow from Ingest -> Analyze -> Route -> Settle.
+*   **Developer Experience**: Shows code snippets (cURL/Node.js) to demonstrate ease of integration.
+
+### 2. The Dashboard (The Product)
+Once logged in (simulated auth), users access the command center (`components/Dashboard.tsx`):
+*   **Live Transaction Feed**: Watch transactions stream in via WebSocket simulation.
+*   **Virtual Terminal**: Manually process payments using Credit Cards, **Indonesian QRIS**, **Singapore PayNow**, or **BI-FAST** transfers.
+*   **AI Risk Analysis**: Click any transaction to see **Google Gemini 2.5** analyze the payload for fraud in real-time.
+*   **Developer Console**: Access API keys, generate SDKs, and view backend architecture code (Go/Rust).
+
+---
+
 ## 🧐 What is the Product?
 
 In the modern financial landscape, merchants often struggle with:
@@ -24,6 +43,8 @@ In the modern financial landscape, merchants often struggle with:
 1.  **A Single API**: One standardized JSON format for all transactions, regardless of the underlying provider.
 2.  **Smart Routing**: An engine that dynamically routes transactions to the cheapest or most reliable provider in real-time.
 3.  **Zero-Trust Vault**: A secure environment that handles sensitive data so you don't have to.
+
+---
 
 ## ⚙️ How It Works
 
@@ -51,6 +72,8 @@ graph LR
 5.  **Execution**: The request is transformed into the specific format required by the selected provider (e.g., ISO 8583 for Chase, JSON for Stripe) and sent upstream.
 6.  **Normalization**: The provider's response is normalized into a standard `200 OK` or `402 Failed` and returned to your app.
 
+---
+
 ## 🌟 Key Features
 
 ### 🧠 AI-Driven Smart Routing
@@ -67,6 +90,8 @@ Native support for Southeast Asian real-time payments:
 
 ### 💳 Virtual Issuing
 Programmatically issue virtual cards for operational expenses. Set strict spend limits, merchant category restrictions, and expiry dates via API.
+
+---
 
 ## 💻 Configuration Example
 
