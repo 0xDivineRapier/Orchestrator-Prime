@@ -1,0 +1,5 @@
+{
+  "name": "Orchestrator Prime",
+  "description": "Enterprise-grade Payment Service Provider (PSP) dashboard featuring real-time transaction orchestration, AI-driven risk analysis, and high-concurrency ledger monitoring.",
+  "requestFramePermissions": []
+}
