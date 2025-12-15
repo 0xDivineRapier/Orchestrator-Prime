@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Hexagon, ArrowRight, ShieldCheck, Zap, Globe, Code, Database, Lock, CheckCircle, Terminal, CreditCard, LayoutTemplate } from 'lucide-react';
+import { Hexagon, ArrowRight, ShieldCheck, Zap, Globe, Code, Database, Lock, CheckCircle, Terminal, CreditCard, LayoutTemplate, Server, GitMerge, Cpu } from 'lucide-react';
 
 interface LandingPageProps {
   onLoginClick: () => void;
@@ -57,8 +57,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick, onSignupClick, 
           </h1>
           
           <p className="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-            Unify Stripe, Adyen, and Local Rails into a single, programmable API. 
-            Optimize costs with AI-driven smart routing and ensure 99.999% uptime.
+            A single API to orchestrate payments across Stripe, Adyen, and Local Rails. 
+            Automate routing, reduce fees, and unify your financial data.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
@@ -75,39 +75,136 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick, onSignupClick, 
               <Terminal size={18} /> Read Documentation
             </button>
           </div>
-
-          {/* Code Snippet Visual */}
-          <div className="mt-16 mx-auto max-w-4xl bg-slate-900 rounded-xl border border-slate-800 shadow-2xl overflow-hidden text-left animate-in fade-in zoom-in duration-1000 delay-500 relative">
-            <div className="flex items-center gap-2 px-4 py-3 bg-slate-950 border-b border-slate-800">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-              </div>
-              <span className="ml-2 text-xs text-slate-500 font-mono">payment_router.go</span>
-            </div>
-            <div className="p-6 overflow-x-auto">
-              <pre className="font-mono text-sm leading-relaxed text-blue-100">
-                <span className="text-purple-400">func</span> <span className="text-blue-400">RoutePayment</span>(req ChargeRequest) <span className="text-purple-400">Provider</span> {'{'}
-{'\n'}  <span className="text-slate-500">// AI-Optimized Least Cost Routing</span>
-{'\n'}  <span className="text-purple-400">if</span> req.Currency == <span className="text-green-400">"IDR"</span> {'{'}
-{'\n'}    <span className="text-purple-400">return</span> adapters.SnapBI_FAST <span className="text-slate-500">// Cost: $0.15</span>
-{'\n'}  {'}'}
-{'\n'}  <span className="text-purple-400">if</span> req.Amount > <span className="text-orange-400">1000</span> && req.Region == <span className="text-green-400">"EU"</span> {'{'}
-{'\n'}    <span className="text-purple-400">return</span> adapters.Adyen <span className="text-slate-500">// Auth Rate: 98%</span>
-{'\n'}  {'}'}
-{'\n'}  <span className="text-purple-400">return</span> adapters.Stripe <span className="text-slate-500">// Default Fallback</span>
-{'\n'} {'}'}
-              </pre>
-            </div>
-          </div>
         </div>
       </section>
 
+      {/* How It Works (Architecture) */}
+      <section className="py-24 bg-slate-900/50 border-y border-slate-800 relative">
+         <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+               <h2 className="text-3xl font-bold mb-4">How Orchestrator Prime Works</h2>
+               <p className="text-slate-400 max-w-2xl mx-auto">We sit between your application and the complex world of banking, handling the heavy lifting of security, routing, and compliance.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                {/* Step 1 */}
+                <div className="bg-[#0B1120] border border-slate-800 p-6 rounded-xl relative z-10">
+                    <div className="w-10 h-10 bg-blue-600/20 text-blue-500 rounded-lg flex items-center justify-center mb-4 border border-blue-500/30 font-bold">1</div>
+                    <h3 className="font-bold text-lg mb-2 text-white">Ingest</h3>
+                    <p className="text-sm text-slate-400">Your app sends raw payment details via our secure SDK. We instantly tokenize sensitive data (PCI Vault).</p>
+                    <div className="mt-4 flex justify-center">
+                        <Code className="text-slate-600" />
+                    </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-[#0B1120] border border-slate-800 p-6 rounded-xl relative z-10">
+                    <div className="w-10 h-10 bg-purple-600/20 text-purple-500 rounded-lg flex items-center justify-center mb-4 border border-purple-500/30 font-bold">2</div>
+                    <h3 className="font-bold text-lg mb-2 text-white">Analyze</h3>
+                    <p className="text-sm text-slate-400">Our Gemini AI engine scores the transaction for fraud and determines the optimal route based on cost & health.</p>
+                    <div className="mt-4 flex justify-center">
+                        <Cpu className="text-purple-500 animate-pulse" />
+                    </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-[#0B1120] border border-slate-800 p-6 rounded-xl relative z-10">
+                    <div className="w-10 h-10 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mb-4 border border-orange-500/30 font-bold">3</div>
+                    <h3 className="font-bold text-lg mb-2 text-white">Route</h3>
+                    <p className="text-sm text-slate-400">The request is dynamically dispatched to the best provider (e.g. Stripe for US Cards, BCA for Indonesia).</p>
+                    <div className="mt-4 flex justify-center">
+                        <GitMerge className="text-orange-500" />
+                    </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-[#0B1120] border border-slate-800 p-6 rounded-xl relative z-10">
+                    <div className="w-10 h-10 bg-green-600/20 text-green-500 rounded-lg flex items-center justify-center mb-4 border border-green-500/30 font-bold">4</div>
+                    <h3 className="font-bold text-lg mb-2 text-white">Settle</h3>
+                    <p className="text-sm text-slate-400">Funds are captured, and a unified webhook is sent back to your server. We handle the reconciliation.</p>
+                    <div className="mt-4 flex justify-center">
+                        <Database className="text-green-500" />
+                    </div>
+                </div>
+
+                {/* Connecting Line (Desktop) */}
+                <div className="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-blue-900 via-purple-900 to-green-900 -z-0"></div>
+            </div>
+         </div>
+      </section>
+
+      {/* Code Demo */}
+      <section className="py-24 px-6">
+         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-mono mb-6">
+                    <Terminal size={12} /> DEVELOPER EXPERIENCE
+                </div>
+                <h2 className="text-4xl font-bold mb-6">One API to Rule Them All</h2>
+                <p className="text-slate-400 text-lg mb-8">
+                    Stop maintaining separate integrations for Stripe, PayPal, and Adyen. Switch providers with a single line of config, not code changes.
+                </p>
+                <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                        <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500"><Globe size={20} /></div>
+                        <div>
+                            <h4 className="font-bold text-white">Global Reach</h4>
+                            <p className="text-sm text-slate-400">Accept payments in 135+ currencies and 40+ local payment methods.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                        <div className="p-2 bg-purple-500/10 rounded-lg text-purple-500"><Server size={20} /></div>
+                        <div>
+                            <h4 className="font-bold text-white">99.999% Uptime</h4>
+                            <p className="text-sm text-slate-400">Our multi-region architecture ensures you never miss a sale, even if one provider goes down.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Code Block */}
+            <div className="bg-[#0d1117] rounded-xl border border-slate-800 shadow-2xl p-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-4">
+                    <div className="flex gap-4 text-sm font-medium">
+                        <span className="text-white border-b-2 border-blue-500 pb-1">cURL</span>
+                        <span className="text-slate-500">Node.js</span>
+                        <span className="text-slate-500">Python</span>
+                    </div>
+                    <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                    </div>
+                </div>
+                <pre className="font-mono text-xs leading-relaxed text-slate-300">
+{`curl https://api.orchestrator.com/v1/charges \\
+  -u api_key_mock_...: \\
+  -d amount=2000 \\
+  -d currency=usd \\
+  -d source=tok_visa_debit_us \\
+  -d smart_routing=true
+
+{
+  "id": "ch_3Lb...",
+  "amount": 2000,
+  "currency": "usd",
+  "status": "succeeded",
+  "routing": {
+     "provider": "tabapay",
+     "reason": "lowest_cost",
+     "savings": "0.45"
+  }
+}`}
+                </pre>
+            </div>
+         </div>
+      </section>
+
       {/* Trust Section */}
-      <section className="py-12 border-y border-slate-800/50 bg-slate-900/20">
+      <section className="py-16 border-y border-slate-800/50 bg-slate-900/20">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm font-bold text-slate-500 uppercase tracking-widest mb-8">Trusted by next-gen fintechs</p>
+          <p className="text-center text-sm font-bold text-slate-500 uppercase tracking-widest mb-10">Trusted by next-gen fintechs</p>
           <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
              {['NeoBank', 'CoinFlow', 'PayStack', 'TechCorp', 'GlobalPay'].map((brand, i) => (
                <div key={i} className="text-xl font-bold font-mono">{brand}</div>
@@ -163,68 +260,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick, onSignupClick, 
                 <p className="text-slate-400 leading-relaxed text-sm">{feature.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Developer Experience */}
-      <section id="developers" className="py-24 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="flex items-center gap-2 text-blue-500 font-bold mb-4">
-              <Code size={20} />
-              <span>DEVELOPER FIRST</span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Integrate in minutes, <br/>not months.</h2>
-            <p className="text-slate-400 mb-8 text-lg">
-              Our SDKs are typed strictly in TypeScript, Go, and Rust. We provide instant mock environments that mirror production behavior perfectly.
-            </p>
-            <ul className="space-y-4 mb-8">
-              {['Auto-generated SDKs', 'Deterministic Mock Data', 'Real-time Webhook Testing', 'Versioning Strategy'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle size={20} className="text-green-500" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <button onClick={onDocsClick} className="px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg font-bold text-white transition-colors">
-              View API Docs
-            </button>
-          </div>
-          <div className="bg-[#0d1117] rounded-xl border border-slate-800 shadow-2xl p-6 relative">
-             <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
-             <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-4">
-               <div className="flex gap-4 text-sm font-medium">
-                  <span className="text-white border-b-2 border-orange-500 pb-1">cURL</span>
-                  <span className="text-slate-500">Node</span>
-                  <span className="text-slate-500">Go</span>
-                  <span className="text-slate-500">Python</span>
-               </div>
-               <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-               </div>
-             </div>
-             <pre className="font-mono text-xs leading-relaxed text-slate-300">
-{`curl https://api.orchestrator.com/v1/charges \\
-  -u api_key_mock_...: \\
-  -d amount=2000 \\
-  -d currency=usd \\
-  -d source=tok_visa_debit_us \\
-  -d smart_routing=true
-
-{
-  "id": "ch_3Lb...",
-  "amount": 2000,
-  "currency": "usd",
-  "status": "succeeded",
-  "outcome": {
-    "network_status": "approved_by_network",
-    "risk_level": "normal"
-  }
-}`}
-             </pre>
           </div>
         </div>
       </section>
